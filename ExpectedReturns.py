@@ -84,9 +84,17 @@ df_cov = df[["unicredit","bpm","intesa"]].copy()
 cov_matrix = df_cov.pct_change().apply(lambda x: np.log(1+x)).cov()
 cov_matrix
 
+#plotto cov_matrix
+sns.heatmap(cov_matrix, cmap="viridis",annot=True)
+plt.title("Covariance Matrix")
+
 #correlazione
 corr_matrix = df_cov.pct_change().apply(lambda x: np.log(1+x)).corr()
 corr_matrix
+
+#plotto cov_matrix
+sns.heatmap(corr_matrix, cmap="viridis",annot=True)
+plt.title("Correlation Matrix")
 
 #adesso assumo dei pesi (weight) random per i tre asset
 #questi pesi sono la quota degli asset all'interno del portafoglio 
@@ -169,5 +177,6 @@ expected_return_portafoglio
 #vari a seconda del tipo di trading si voglia attuare. 
 #expected return monthly: 0.06903877688101037
 #expected return daily: 0.11497798332374587
+
 
 
